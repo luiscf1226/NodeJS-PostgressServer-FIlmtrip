@@ -1,11 +1,11 @@
 const {Pool}=require('pg');
 
 const pool=new Pool({
-    host:'localhost',
+    host:'containers-us-west-91.railway.app',
     user:'postgres',
-    password:'luis123',
-    database:'filmtrip',
-    port:'5432'
+    password:'hZiBIOiaDXOVKUJqoc80',
+    database:'railway',
+    port:'7623'
 });
 
 const getUsers= async (req,res)=>{
