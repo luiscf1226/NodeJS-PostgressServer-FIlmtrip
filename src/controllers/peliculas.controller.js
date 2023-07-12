@@ -9,18 +9,18 @@ const pool=new Pool({
 });
 
 const getPeliculas= async (req,res)=>{
-    const response= await pool.query('select * from Peliculas');
+    const response= await pool.query('select * from "Peliculas"');
     res.json(response.rows)
 }
 
 const getPelicula = async (req, res) => {
 
-    const { id } = req.params;
+    const { idPelicula } = req.params;
 
     try {
-        const connection = await getConnection();
-        const result = await connection.query('SELECT * FROM Peliculas WHERE idPelicula = ?'
-            , [id])
+        
+        const result = await pool.query('SELECT * FROM "Peliculas" WHERE "idPelicula" = $1'
+            , [idPelicula])
 
         res.json(result)
     } catch (error) {
@@ -34,8 +34,8 @@ const getPeliculaImagen = async (req, res) => {
 
 
     try {
-        const connection = await getConnection();
-        const result = await connection.query('SELECT FotoUrl,idPelicula FROM Peliculas')
+
+        const result = await pool.query('SELECT "FotoUrl","idPelicula" FROM "Peliculas"')
 
         res.json(result)
     } catch (error) {
