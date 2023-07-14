@@ -10,7 +10,9 @@ const pool=new Pool({
 
 const getPeliculas= async (req,res)=>{
     const response= await pool.query('select * from "Peliculas"');
-    res.json(response.rows)
+    const rows = response.rows; // Obtain the rows from the result
+
+    res.json(rows);
 }
 
 const getPelicula = async (req, res) => {
@@ -22,7 +24,9 @@ const getPelicula = async (req, res) => {
         const result = await pool.query('SELECT * FROM "Peliculas" WHERE "idPelicula" = $1'
             , [idPelicula])
 
-        res.json(result)
+            const rows = result.rows; // Obtain the rows from the result
+
+            res.json(rows);
     } catch (error) {
         res.status(400)
         res.send(error.message)
@@ -37,7 +41,9 @@ const getPeliculaImagen = async (req, res) => {
 
         const result = await pool.query('SELECT "FotoUrl","idPelicula" FROM "Peliculas"')
 
-        res.json(result)
+        const rows = result.rows; // Obtain the rows from the result
+
+        res.json(rows);
     } catch (error) {
         res.status(400)
         res.send(error.message)
