@@ -28,14 +28,15 @@ const getPelicula = async (req, res) => {
     const { idPelicula } = req.params;
 
     try {
-
-        const result = await pool.query('SELECT "Nombre","Duracion","Rango","Genero","Descripcion","Horarios","FotoUrl" FROM "Peliculas" WHERE "idPelicula" = $1'
-            , [idPelicula])
-            res.json(result.rows)
+        const result = await pool.query(
+            'SELECT "Nombre","Duracion","Rango","Genero","Descripcion","Horarios","FotoUrl" FROM "Peliculas" WHERE "idPelicula" = $1',
+            [idPelicula]
+        );
+        res.json(result.rows);
     } catch (error) {
-        res.status(400)
-        res.send(error.message)
-        console.log("error en get pelicula: "+error.message)
+        res.status(400);
+        res.send(error.message);
+        console.log("error en get pelicula: " + error.message);
     }
 }
 
