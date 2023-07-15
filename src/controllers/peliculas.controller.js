@@ -30,7 +30,7 @@ const getPelicula = async (req, res) => {
     try {
         const result = await pool.query(
             'SELECT "Nombre","Duracion","Rango","Genero","Descripcion","Horarios","FotoUrl" FROM "Peliculas" WHERE "idPelicula" = $1',
-            idPelicula
+           [idPelicula]
         );
         res.json(result.rows);
     } catch (error) {
