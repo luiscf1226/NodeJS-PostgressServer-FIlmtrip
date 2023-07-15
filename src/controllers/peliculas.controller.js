@@ -29,7 +29,7 @@ const getPelicula = async (req, res) => {
 
     try {
 
-        const result = await pool.query('SELECT "Nombre","Duracion","Rango","Genero","Descripcion","Horarios","FotoUrl" FROM "Peliculas" WHERE "idPelicula" = ?'
+        const result = await pool.query('SELECT "Nombre","Duracion","Rango","Genero","Descripcion","Horarios","FotoUrl" FROM "Peliculas" WHERE "idPelicula" = $1'
             , [idPelicula])
             res.json(result.rows)
     } catch (error) {
