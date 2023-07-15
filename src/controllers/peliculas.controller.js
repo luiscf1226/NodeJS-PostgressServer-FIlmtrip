@@ -32,6 +32,8 @@ const getPelicula = async (req, res) => {
             'SELECT "Nombre","Duracion","Rango","Genero","Descripcion","Horarios","FotoUrl" FROM "Peliculas" WHERE "idPelicula" = $1',
            [idPelicula]
         );
+        console.log('idPelicula:', idPelicula);
+        console.log('result:', result);
         res.json(result.rows);
     } catch (error) {
         res.status(400);
