@@ -13,7 +13,7 @@ router.post('/checkUsuario', checkUsuario)
 
 //pelicula
 router.get('/getPeliculas', getPeliculas)
-router.get('/getPelicula', getPelicula)
+router.get('/getPelicula/:idPelicula', getPelicula)
 router.get('/getPeliculaImagen', getPeliculaImagen)
 
 
